@@ -27,3 +27,6 @@ class Test(models.Model):
         max_length=10,
         choices=STATUSES
     )
+
+    def __str__(self):
+        return self.name
