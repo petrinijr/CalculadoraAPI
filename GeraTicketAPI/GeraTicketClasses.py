@@ -2,10 +2,10 @@ import datetime as dt
 import json
 
 
-class TicketGenerator:
+class TicketGenerator(object):
     def __init__(self):
         self._timestamp = dt.datetime.now()
 
     @classmethod
-    def calculate(cls, request: json):
+    def process(cls, request: json):
         return request

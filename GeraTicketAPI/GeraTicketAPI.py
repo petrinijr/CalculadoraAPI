@@ -1,5 +1,5 @@
 from flask import blueprints, request
-from GeraTicketClasses import TicketGenerator
+from GeraTicketAPI.GeraTicketClasses import TicketGenerator
 
 GeraTicket_blueprint = blueprints.Blueprint('GeraTicket_blueprint', __name__)
 
