@@ -1,4 +1,4 @@
-from flask import blueprints, request
+from flask import blueprints, request, jsonify
 from GeraTicketAPI.GeraTicketClasses import TicketGenerator
 
 GeraTicket_blueprint = blueprints.Blueprint('GeraTicket_blueprint', __name__)
@@ -18,7 +18,7 @@ def show_welcome_page():
 
 
 @GeraTicket_blueprint.route('/calculate', methods=['POST'])
-def process_calculation_request(req):
-    tickgen = TicketGenerator()
-    TicketGenerator.process(req.json)
-    return None
+def process_calculation_request():
+    tickgen = TicketGenerator(request.json)
+    result = tickgen.process()
+    return jsonify(result)
