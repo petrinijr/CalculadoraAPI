@@ -1,23 +1,28 @@
 import datetime as dt
 import json
+import alphabetic_timestamp as ats
 
 VALID_OPERATIONS = ['plus', 'minus', 'divided', 'times']
 VALID_RANGE = range(100)
 
 
 class TicketGenerator(object):
-    def __init__(self, request: json, timestamp=dt.datetime.utcnow().isoformat()):
+    def __init__(self, request: json):
         self._request = request
-        self._timestamp = timestamp
+        self._timestamp = dt.datetime.utcnow()
 
     def process(self):
         is_valid, comment = self.check_request()
 
         enh_request = {
             'request': self._request,
-            'timestamp': self._timestamp,
+            'timestamp': self._timestamp.isoformat(),
             'is_valid': is_valid,
-            'comment': comment
+            'comment': comment,
+            'code': ats.base62.from_datetime(
+                date_time=self._timestamp,
+                time_unit=ats.TimeUnit.milliseconds,
+            )
         }
 
         # store request
@@ -64,9 +69,13 @@ class TicketGenerator(object):
     def store_request(request):
         f = open('tickreq_db.txt', 'a')
         try:
-            f.write(json.dumps(request, indent=4, default=str) + '\n')
+            f.write(
+                json.dumps(request, indent=4, default=str) + '\n#\n'
+            )
         except TypeError as e:
             print(f'{e}')
-            f.write(json.dumps(request, indent=4, default=str, skip=True) + '\n')
+            f.write(
+                json.dumps(request, indent=4, default=str, skip=True) + '\n#\n'
+            )
         finally:
             f.close()

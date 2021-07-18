@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>CalculadoraAPI - Home</title>
+</head>
+<body>
+  <H2>CalculadoraAPI</H2>
+  <H4>O que é?</H4>
+  <p>Uma API simples que funcionará como prova de conceito da utilização de Flask
+    na prototipagem rápida de web APIs.
+  </p>
+  <H4>Vamos usar!</H4>
+  <form action="{{url}}" method="post">
+    <input id="val1" name="val1"/>
+    <select id="operation" name="operation">
+      <option value="plus">+</option>
+      <option value="minus">-</option>
+      <option value="times">&#215;</option>
+      <option value="divided">&#247;</option>
+    </select>
+    <input id="val2" name="val2"/>
+    <input type="submit" value="Submit">
+  </form>
+</body>
+</html>

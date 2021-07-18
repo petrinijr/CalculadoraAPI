@@ -1,80 +1,125 @@
-{
-    "request": {
-        "val1": 1,
-        "val2": 9,
-        "operation": "times"
-    },
-    "timestamp": "2021-07-10T01:25:10.463052",
-    "is_valid": true,
-    "comment": "OK."
-}
-{
-    "request": {
-        "val1": 1,
-        "val2": 0,
-        "operation": "plus"
-    },
-    "timestamp": "2021-07-10T01:25:10.463052",
-    "is_valid": true,
-    "comment": "OK."
-}
-{
-    "request": {
-        "val1": 1,
-        "val2": -1,
-        "operation": "plus"
-    },
-    "timestamp": "2021-07-10T01:25:10.463052",
-    "is_valid": false,
-    "comment": "Value 2 not in valid range."
-}
-{
-    "request": {
-        "val1": 1,
-        "val2": 15,
-        "operation": "minus"
-    },
-    "timestamp": "2021-07-10T01:25:10.463052",
-    "is_valid": true,
-    "comment": "OK."
-}
+#
 {
     "request": {
         "val1": 7,
-        "val2": 0,
-        "operation": "divided"
+        "operation": "corinthians",
+        "val2": 0
     },
-    "timestamp": "2021-07-10T01:25:10.463052",
+    "timestamp": "2021-07-18T05:16:13.862053",
     "is_valid": false,
-    "comment": "Division by zero"
+    "comment": "Invalid operation.",
+    "code": "sDv9M5a"
 }
+#
 {
     "request": {
         "val1": 7,
-        "operation": "Palmeiras n\u00e3o tem mundial",
-        "val2": 2
+        "operation": "corinthians",
+        "val2": 0
     },
-    "timestamp": "2021-07-10T01:25:10.463052",
+    "timestamp": "2021-07-18T05:16:14.803416",
     "is_valid": false,
-    "comment": "Invalid operation."
+    "comment": "Invalid operation.",
+    "code": "sDv9Mli"
 }
+#
 {
     "request": {
-        "val1": -20,
-        "operation": "Palmeiras n\u00e3o tem mundial",
-        "val2": 2
-    },
-    "timestamp": "2021-07-10T01:25:10.463052",
-    "is_valid": false,
-    "comment": "Invalid operation."
-}
-{
-    "request": {
-        "val1": -20,
+        "val1": 7,
         "operation": "plus",
+        "val2": 0
+    },
+    "timestamp": "2021-07-18T05:16:49.201737",
+    "is_valid": true,
+    "comment": "OK.",
+    "code": "sDv9VrO"
+}
+#
+{
+    "request": {
+        "val1": 7,
+        "operation": "times",
+        "val2": 0
+    },
+    "timestamp": "2021-07-18T05:17:07.746397",
+    "is_valid": true,
+    "comment": "OK.",
+    "code": "sDva088"
+}
+#
+{
+    "request": {
+        "val1": 7,
+        "operation": "divided",
+        "val2": 0
+    },
+    "timestamp": "2021-07-18T05:17:16.573033",
+    "is_valid": false,
+    "comment": "Division by zero",
+    "code": "sDva2ti"
+}
+#
+{
+    "request": {
+        "val1": 7,
+        "operation": "divided",
         "val2": 2
     },
-    "timestamp": "2021-07-10T01:25:10.463052",
-    "is_valid": false,
-    "comment": "Value 1 not in valid range."
+    "timestamp": "2021-07-18T05:17:23.156515",
+    "is_valid": true,
+    "comment": "OK.",
+    "code": "sDva4ic"
 }
+#
+{
+    "request": null,
+    "timestamp": "2021-07-18T08:38:55.562548",
+    "is_valid": false,
+    "comment": "No request.",
+    "code": "sDvYNYs"
+}
+#
+{
+    "request": null,
+    "timestamp": "2021-07-18T08:42:50.178076",
+    "is_valid": false,
+    "comment": "No request.",
+    "code": "sDvZN6M"
+}
+#
+{
+    "request": null,
+    "timestamp": "2021-07-18T08:47:22.728348",
+    "is_valid": false,
+    "comment": "No request.",
+    "code": "sDw0VRS"
+}
+#
+{
+    "request": null,
+    "timestamp": "2021-07-18T08:48:27.086569",
+    "is_valid": false,
+    "comment": "No request.",
+    "code": "sDw1cMg"
+}
+#
+{
+    "request": null,
+    "timestamp": "2021-07-18T08:49:38.367754",
+    "is_valid": false,
+    "comment": "No request.",
+    "code": "sDw1vfq"
+}
+#
+{
+    "request": {
+        "operation": "plus",
+        "val1": "1",
+        "val2": "1"
+    },
+    "timestamp": "2021-07-18T08:57:28.406811",
+    "is_valid": true,
+    "comment": "OK.",
+    "code": "sDw3tw4"
+}
+#
