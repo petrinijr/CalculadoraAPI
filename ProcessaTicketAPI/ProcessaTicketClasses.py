@@ -1,9 +1,6 @@
 import datetime as dt
 import json
-import alphabetic_timestamp as ats
-
-VALID_OPERATIONS = ['plus', 'minus', 'divided', 'times']
-VALID_RANGE = range(100)
+from settings import VALID_OPERATIONS
 
 
 class TicketProcessor(object):
@@ -12,70 +9,71 @@ class TicketProcessor(object):
         self._timestamp = dt.datetime.utcnow()
 
     def process(self):
-        is_valid, comment = self.check_request()
-
-        enh_request = {
-            'request': self._request,
-            'timestamp': self._timestamp.isoformat(),
-            'is_valid': is_valid,
-            'comment': comment,
-            'code': ats.base62.from_datetime(
-                date_time=self._timestamp,
-                time_unit=ats.TimeUnit.milliseconds,
-            )
-        }
-
-        # store request
-        self.store_request(enh_request)
-
-        return enh_request
-
-    def check_request(self) -> tuple:
-        if not self._request:
-            return False, 'No request.'
 
         data = self._request
 
-        # Operation validation
-        try:
-            if data['operation'] not in VALID_OPERATIONS:
-                return False, 'Invalid operation.'
-        except KeyError:
-            return False, 'No operation.'
+        # attempts to calculate operation related to given code
+        proc_req = self.process_calculation_by_code(data['code'])
 
-        # Value validation
-        try:
-            val1 = int(data['val1'])
-            val2 = int(data['val2'])
+        # store process request
+        self.store_request(proc_req)
 
-            # avoid division by zero
-            if val2 == 0 and data['operation'] == 'divided':
-                return False, 'Division by zero'
+        return proc_req
 
-            # avoid outside range
-            if val1 < VALID_RANGE[0] or val1 >= VALID_RANGE[-1]:
-                return False, 'Value 1 not in valid range.'
-            if val2 < VALID_RANGE[0] or val2 >= VALID_RANGE[-1]:
-                return False, 'Value 2 not in valid range.'
+    def process_calculation_by_code(self, code):
 
-        except KeyError:
-            return False, 'Missing values.'
-        except TypeError:
-            return False, 'Invalid value type passed.'
+        proc_req = {
+            'succesful': 'no',
+            'operation': None,
+            'val': None,
+            'code': code,
+            'timestamp': self._timestamp
+        }
 
-        return True, 'OK.'
+        with open('../Infrastructure/tickreq_db.txt', 'r') as f:
+
+            try:
+                for req in calculation_requests := f.read().split('#'):
+                    if bool(req['is_valid']) and req['code'] == code:
+
+                        v1, v2, op = req['val1'], req['val2'], req['operation']
+
+                        proc_req['val'] = self.operate(v1, v2, op)
+
+                        proc_req['operation'] = f'{v1} {op} {v2}'
+
+                        proc_req['succesful'] = 'yes'
+
+                        break
+
+            except Exception as e:
+
+                proc_req['sucessful'] = 'no'
+
+                proc_req['error'] = e
+
+            finally:
+                f.close()
+
+        return proc_req
 
     @staticmethod
     def store_request(request):
-        f = open('tickreq_db.txt', 'a')
-        try:
-            f.write(
-                json.dumps(request, indent=4, default=str) + '\n#\n'
-            )
-        except TypeError as e:
-            print(f'{e}')
-            f.write(
-                json.dumps(request, indent=4, default=str, skip=True) + '\n#\n'
-            )
-        finally:
-            f.close()
+        with open('../Infrastructure/tickprocs_db.txt', 'a') as f:
+            try:
+                f.write(
+                    json.dumps(request, indent=4, default=str) + '\n#\n'
+                )
+
+            except TypeError as e:
+                print(f'{e}')
+                f.write(
+                    json.dumps(request, indent=4, default=str, skip=True) + '\n#\n'
+                )
+
+            finally:
+                f.close()
+
+    @staticmethod
+    def operate(v1, v2, op):
+        return VALID_OPERATIONS[op](v1, v2)

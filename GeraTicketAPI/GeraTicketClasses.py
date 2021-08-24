@@ -1,9 +1,7 @@
 import datetime as dt
 import json
 import alphabetic_timestamp as ats
-
-VALID_OPERATIONS = ['plus', 'minus', 'divided', 'times']
-VALID_RANGE = range(100)
+from settings import VALID_OPERATIONS, VALID_RANGE
 
 
 class TicketGenerator(object):
@@ -36,6 +34,11 @@ class TicketGenerator(object):
 
         data = self._request
 
+        # Safeguarding against '#' character
+        for field in data:
+            if "#" in data[field]:
+                data[field] = str(data[field]).replace("#", "<HASH>")
+
         # Operation validation
         try:
             if data['operation'] not in VALID_OPERATIONS:
@@ -67,15 +70,17 @@ class TicketGenerator(object):
 
     @staticmethod
     def store_request(request):
-        f = open('tickreq_db.txt', 'a')
-        try:
-            f.write(
-                json.dumps(request, indent=4, default=str) + '\n#\n'
-            )
-        except TypeError as e:
-            print(f'{e}')
-            f.write(
-                json.dumps(request, indent=4, default=str, skip=True) + '\n#\n'
-            )
-        finally:
-            f.close()
+        with open('../Infrastructure/tickreq_db.txt') as f:
+            try:
+                f.write(
+                    json.dumps(request, indent=4, default=str) + '\n#\n'
+                )
+
+            except TypeError as e:
+                print(f'{e}')
+                f.write(
+                    json.dumps(request, indent=4, default=str, skip=True) + '\n#\n'
+                )
+
+            finally:
+                f.close()
