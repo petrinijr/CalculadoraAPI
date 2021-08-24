@@ -123,3 +123,27 @@
     "code": "sDw3tw4"
 }
 #
+{
+    "request": {
+        "operation": "plus",
+        "val1": "2",
+        "val2": "1"
+    },
+    "timestamp": "2021-08-11T16:12:02.634941",
+    "is_valid": true,
+    "comment": "OK.",
+    "code": "sFO9uDK"
+}
+#
+{
+    "request": {
+        "operation": "plus",
+        "val1": "2",
+        "val2": "1"
+    },
+    "timestamp": "2021-08-11T20:51:42.708903",
+    "is_valid": true,
+    "comment": "OK.",
+    "code": "sFPhTSU"
+}
+#

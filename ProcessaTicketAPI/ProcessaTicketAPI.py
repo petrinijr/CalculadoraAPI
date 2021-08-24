@@ -8,32 +8,32 @@ from flask import (
 )
 import os
 from markupsafe import Markup
-from GeraTicketAPI.GeraTicketClasses import TicketGenerator
+from ProcessaTicketAPI.ProcessaTicketClasses import TicketProcessor
 
 # urls
-home_url = os.path.join(os.environ['APP_1_HOST'], os.environ['APP_1_PORT'])
-calculate_url = '/calculate'
+home_url = os.path.join(os.environ['APP_2_HOST'], os.environ['APP_2_PORT'])
+process_url = '/process'
 
-GeraTicket_blueprint = blueprints.Blueprint('GeraTicket_blueprint', __name__)
+ProcessaTicket_blueprint = blueprints.Blueprint('ProcessaTicket_blueprint', __name__)
 
 
-@GeraTicket_blueprint.route("/")
+@ProcessaTicket_blueprint.route("/")
 def show_welcome_page():
     return render_template(
         'welcome_page.html',
-        url=calculate_url
+        url=home_url
     )
 
 
-@GeraTicket_blueprint.route('/calculate', methods=['POST'])
+@ProcessaTicket_blueprint.route('/process', methods=['POST'])
 def process_calculation_request_and_redirect():
-    tickgen = TicketGenerator(jsonify(request.form).json)
-    result = tickgen.process()
+    tickprocs = TicketProcessor(jsonify(request.form).json)
+    result = tickprocs.process()
     session['result'] = result
-    return redirect('/getticket')
+    return redirect('/reqcomplete')
 
 
-@GeraTicket_blueprint.route('/getticket')
+@ProcessaTicket_blueprint.route('/getticket')
 def give_ticket():
     result = session.get('result', None)
     if bool(result['is_valid']):
@@ -50,6 +50,6 @@ def give_ticket():
         """)
 
     return render_template(
-        'get_ticket_page.html',
+        'force_ticket_process.html',
         result_str=result_str
     )

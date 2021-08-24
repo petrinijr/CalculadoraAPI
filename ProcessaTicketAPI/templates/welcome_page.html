@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>CalculadoraAPI</title>
+</head>
+<body>
+  <H2>CalculadoraAPI - Forçar processamento de requisição</H2>
+  <H4>Sobre</H4>
+  <p>Sua requisição será processada automaticamente em alguns minutos e estará disponível
+    <a href="{{get_result_link}}">neste link</a>.
+  </p>
+  <p>Entretanto, caso deseje forçar o processamento de sua requisição, insira o código no campo abaixo.</p>
+  <H4>Inserção de código</H4>
+  <form action="{{url}}" method="post">
+    <label for="tick_code_field"></label>Código da requisição.<br />
+    <input type="text" id="tick_code_field" name="tick_code"/>
+  </form>
+</body>
+</html>
