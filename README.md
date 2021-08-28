@@ -16,7 +16,7 @@ que automaticamente processa essas requisições.</li>
 
 <H4>Features</H4>
 <ul>
-<li>As páginas são feias, <i>feitas</i> em HTML5 puro.</li>
+<li>As páginas são <i>feias</i>, feitas em HTML5 puro.</li>
 <li>As três APIs rodam no <i>localhost</i> em portas diferentes. É necessário declarar
 as variáveis: FLASK_APP=run_app_i.py (i=1,2,3 em cada terminal), APP_y_PORT e
 APP_y_HOST (y=1,2,3 para cada i). Sugere-se usar todos os APP_y_HOST=127.0.0.1</li>
