@@ -8,10 +8,13 @@ app_1 = Flask(__name__, template_folder='GeraTicketAPI/templates')
 # blueprint registration
 app_1.register_blueprint(GeraTicket_blueprint)
 
-if __name__ == '__main__':
-    app_1.secret_key = 'skey'
+# secret key
+app_1.secret_key = 'skey'
 
+# debug
+if __name__ == "__main__":
     app_1.run(
         host=os.environ['APP_1_HOST'],
-        port=os.environ['APP_1_PORT']
+        port=os.environ['APP_1_PORT'],
+        debug=True
     )

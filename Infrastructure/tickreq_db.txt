@@ -1,149 +1,36 @@
-#
 {
     "request": {
-        "val1": 7,
-        "operation": "corinthians",
-        "val2": 0
-    },
-    "timestamp": "2021-07-18T05:16:13.862053",
-    "is_valid": false,
-    "comment": "Invalid operation.",
-    "code": "sDv9M5a"
-}
-#
-{
-    "request": {
-        "val1": 7,
-        "operation": "corinthians",
-        "val2": 0
-    },
-    "timestamp": "2021-07-18T05:16:14.803416",
-    "is_valid": false,
-    "comment": "Invalid operation.",
-    "code": "sDv9Mli"
-}
-#
-{
-    "request": {
-        "val1": 7,
         "operation": "plus",
-        "val2": 0
+        "val1": "4",
+        "val2": "1"
     },
-    "timestamp": "2021-07-18T05:16:49.201737",
+    "timestamp": "2021-08-28T02:06:30.679147",
     "is_valid": true,
     "comment": "OK.",
-    "code": "sDv9VrO"
+    "code": "sHm7yUg"
 }
 #
 {
     "request": {
-        "val1": 7,
         "operation": "times",
-        "val2": 0
+        "val1": "5",
+        "val2": "0"
     },
-    "timestamp": "2021-07-18T05:17:07.746397",
+    "timestamp": "2021-08-28T02:19:10.890872",
     "is_valid": true,
     "comment": "OK.",
-    "code": "sDva088"
+    "code": "sHmaKCk"
 }
 #
 {
     "request": {
-        "val1": 7,
-        "operation": "divided",
-        "val2": 0
+        "operation": "minus",
+        "val1": "5",
+        "val2": "7"
     },
-    "timestamp": "2021-07-18T05:17:16.573033",
-    "is_valid": false,
-    "comment": "Division by zero",
-    "code": "sDva2ti"
-}
-#
-{
-    "request": {
-        "val1": 7,
-        "operation": "divided",
-        "val2": 2
-    },
-    "timestamp": "2021-07-18T05:17:23.156515",
+    "timestamp": "2021-08-28T02:19:24.724988",
     "is_valid": true,
     "comment": "OK.",
-    "code": "sDva4ic"
-}
-#
-{
-    "request": null,
-    "timestamp": "2021-07-18T08:38:55.562548",
-    "is_valid": false,
-    "comment": "No request.",
-    "code": "sDvYNYs"
-}
-#
-{
-    "request": null,
-    "timestamp": "2021-07-18T08:42:50.178076",
-    "is_valid": false,
-    "comment": "No request.",
-    "code": "sDvZN6M"
-}
-#
-{
-    "request": null,
-    "timestamp": "2021-07-18T08:47:22.728348",
-    "is_valid": false,
-    "comment": "No request.",
-    "code": "sDw0VRS"
-}
-#
-{
-    "request": null,
-    "timestamp": "2021-07-18T08:48:27.086569",
-    "is_valid": false,
-    "comment": "No request.",
-    "code": "sDw1cMg"
-}
-#
-{
-    "request": null,
-    "timestamp": "2021-07-18T08:49:38.367754",
-    "is_valid": false,
-    "comment": "No request.",
-    "code": "sDw1vfq"
-}
-#
-{
-    "request": {
-        "operation": "plus",
-        "val1": "1",
-        "val2": "1"
-    },
-    "timestamp": "2021-07-18T08:57:28.406811",
-    "is_valid": true,
-    "comment": "OK.",
-    "code": "sDw3tw4"
-}
-#
-{
-    "request": {
-        "operation": "plus",
-        "val1": "2",
-        "val2": "1"
-    },
-    "timestamp": "2021-08-11T16:12:02.634941",
-    "is_valid": true,
-    "comment": "OK.",
-    "code": "sFO9uDK"
-}
-#
-{
-    "request": {
-        "operation": "plus",
-        "val1": "2",
-        "val2": "1"
-    },
-    "timestamp": "2021-08-11T20:51:42.708903",
-    "is_valid": true,
-    "comment": "OK.",
-    "code": "sFPhTSU"
+    "code": "sHmaOg8"
 }
 #

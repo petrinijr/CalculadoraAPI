@@ -12,15 +12,19 @@
   </p>
   <H4>Vamos usar!</H4>
   <form action="{{url}}" method="post">
-    <input id="val1" name="val1"/>
+    <input id="val1" name="val1" type="number"/>
     <select id="operation" name="operation">
       <option value="plus">+</option>
       <option value="minus">-</option>
       <option value="times">&#215;</option>
       <option value="divided">&#247;</option>
     </select>
-    <input id="val2" name="val2"/>
+    <input id="val2" name="val2" type="number"/>
     <input type="submit" value="Submit">
   </form>
+  <H4>Já possui um código?</H4>
+  <p>
+    Pode então <a href="{{force_url}}"> acelerar o cálculo</a> ou <a href="{{result_url}}">obter o resultado</a>.
+  </p>
 </body>
 </html>

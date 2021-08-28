@@ -1,7 +1,9 @@
 import datetime as dt
 import json
+import os.path
+
 import alphabetic_timestamp as ats
-from settings import VALID_OPERATIONS, VALID_RANGE
+from settings import VALID_OPERATIONS, VALID_RANGE, ROOT_DIR
 
 
 class TicketGenerator(object):
@@ -10,6 +12,7 @@ class TicketGenerator(object):
         self._timestamp = dt.datetime.utcnow()
 
     def process(self):
+
         is_valid, comment = self.check_request()
 
         enh_request = {
@@ -29,6 +32,7 @@ class TicketGenerator(object):
         return enh_request
 
     def check_request(self) -> tuple:
+
         if not self._request:
             return False, 'No request.'
 
@@ -70,7 +74,12 @@ class TicketGenerator(object):
 
     @staticmethod
     def store_request(request):
-        with open('../Infrastructure/tickreq_db.txt') as f:
+
+        with open(
+            file=os.path.join(ROOT_DIR, 'Infrastructure', 'tickreq_db.txt'),
+            mode='a'
+        ) as f:
+
             try:
                 f.write(
                     json.dumps(request, indent=4, default=str) + '\n#\n'

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>CalculadoraAPI</title>
+</head>
+<body>
+  <H2>CalculadoraAPI - Obter resultado</H2>
+  <H4>Inserção de código</H4>
+  <form action="{{url}}" method="get">
+    <label for="tick_code_field"></label>Código da requisição.<br />
+    <input type="text" id="tick_code_field" name="code"/>
+    <input type="submit" value="Submit">
+  </form>
+  <H4>Acelerar processamento ou gerar outro código</H4>
+  <p>
+    O processamento será feito automaticamente em alguns minutos.<br />
+    Caso deseje acelerar o processo, <a href="{{process_url}}">clique aqui</a>.
+    Caso deseje gerar outro código, <a href="{{home_url}}">clique aqui</a>.
+  </p>
+</body>
+</html>

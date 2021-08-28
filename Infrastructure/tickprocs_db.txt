@@ -1,0 +1,50 @@
+{
+    "successful": "true",
+    "operation": "4 plus 1",
+    "val": 5.0,
+    "code": "sHm7yUg",
+    "timestamp": "2021-08-28 02:06:40.911471"
+}
+#
+{
+    "successful": "true",
+    "operation": "4 plus 1",
+    "val": 5.0,
+    "code": "sHm7yUg",
+    "timestamp": "2021-08-28 02:17:37.020158"
+}
+#
+{
+    "successful": "false",
+    "operation": null,
+    "val": null,
+    "code": "dabda",
+    "timestamp": "2021-08-28 02:18:38.252642",
+    "error": "Not found."
+}
+#
+{
+    "successful": "false",
+    "operation": null,
+    "val": null,
+    "code": "dabda",
+    "timestamp": "2021-08-28 02:18:54.500152",
+    "error": "Not found."
+}
+#
+{
+    "successful": "true",
+    "operation": "5 times 0",
+    "val": 0.0,
+    "code": "sHmaKCk",
+    "timestamp": "2021-08-28 02:19:15.309087"
+}
+#
+{
+    "successful": "true",
+    "operation": "5 minus 7",
+    "val": -2.0,
+    "code": "sHmaOg8",
+    "timestamp": "2021-08-28 02:19:28.834545"
+}
+#

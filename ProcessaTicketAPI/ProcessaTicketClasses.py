@@ -1,6 +1,7 @@
 import datetime as dt
 import json
-from settings import VALID_OPERATIONS
+import os
+from settings import VALID_OPERATIONS, ROOT_DIR
 
 
 class TicketProcessor(object):
@@ -23,18 +24,29 @@ class TicketProcessor(object):
     def process_calculation_by_code(self, code):
 
         proc_req = {
-            'succesful': 'no',
+            'successful': 'fase',
             'operation': None,
             'val': None,
             'code': code,
             'timestamp': self._timestamp
         }
 
-        with open('../Infrastructure/tickreq_db.txt', 'r') as f:
+        with open(
+            file=os.path.join(ROOT_DIR, 'Infrastructure', 'tickreq_db.txt'),
+            mode='r'
+        ) as f:
 
-            try:
-                for req in calculation_requests := f.read().split('#'):
-                    if bool(req['is_valid']) and req['code'] == code:
+            for req_str in (
+                    calculation_requests := f.read().split('#')
+            ):
+
+                try:
+
+                    enh_req = json.loads(req_str)
+
+                    if enh_req['is_valid'] and enh_req['code'] == code:
+
+                        req = enh_req['request']
 
                         v1, v2, op = req['val1'], req['val2'], req['operation']
 
@@ -42,31 +54,38 @@ class TicketProcessor(object):
 
                         proc_req['operation'] = f'{v1} {op} {v2}'
 
-                        proc_req['succesful'] = 'yes'
+                        proc_req['successful'] = 'true'
 
                         break
 
-            except Exception as e:
+                except json.JSONDecodeError:
 
-                proc_req['sucessful'] = 'no'
+                    proc_req['successful'] = 'false'
 
-                proc_req['error'] = e
+                    proc_req['error'] = 'Not found.'
 
-            finally:
-                f.close()
+                except Exception as e:
+
+                    proc_req['successful'] = 'false'
+
+                    proc_req['error'] = e.__str__()
 
         return proc_req
 
     @staticmethod
     def store_request(request):
-        with open('../Infrastructure/tickprocs_db.txt', 'a') as f:
+
+        with open(
+                file=os.path.join(ROOT_DIR, 'Infrastructure', 'tickprocs_db.txt'),
+                mode='a'
+        ) as f:
+
             try:
                 f.write(
                     json.dumps(request, indent=4, default=str) + '\n#\n'
                 )
 
             except TypeError as e:
-                print(f'{e}')
                 f.write(
                     json.dumps(request, indent=4, default=str, skip=True) + '\n#\n'
                 )
@@ -76,4 +95,4 @@ class TicketProcessor(object):
 
     @staticmethod
     def operate(v1, v2, op):
-        return VALID_OPERATIONS[op](v1, v2)
+        return VALID_OPERATIONS[op](float(v1), float(v2))
